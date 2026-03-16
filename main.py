@@ -1,0 +1,21 @@
+import os
+
+from fastapi import FastAPI
+from dotenv import load_dotenv
+from fastapi.security import OAuth2PasswordBearer
+
+load_dotenv()
+
+SECRET_KEY = os.getenv('SECRET_KEY') 
+ALGORITHM = os.getenv("ALGORITHM")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
+
+app = FastAPI()
+
+oatuh2_schema = OAuth2PasswordBearer(tokenUrl="auth/login-form")
+
+from auth_routes import auth_router
+from man_routes import man_router
+
+app.include_router(auth_router)
+app.include_router(man_router)
