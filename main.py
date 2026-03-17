@@ -3,6 +3,7 @@ import os
 from models import BASE
 from fastapi import FastAPI
 from dotenv import load_dotenv
+from sqlalchemy import create_engine
 from fastapi.security import OAuth2PasswordBearer
 
 load_dotenv()
