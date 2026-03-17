@@ -1,8 +1,8 @@
 import os
 
+from models import BASE
 from fastapi import FastAPI
 from dotenv import load_dotenv
-from models import BASE, engine
 from fastapi.security import OAuth2PasswordBearer
 
 load_dotenv()
@@ -21,4 +21,5 @@ from man_routes import man_router
 app.include_router(auth_router)
 app.include_router(man_router)
 
-BASE.metadata.create_all(bind=engine)
+db = create_engine(os.getenv("DATABASE_URL"))
+BASE.metadata.create_all(bind=db)
