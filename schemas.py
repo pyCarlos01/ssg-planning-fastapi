@@ -33,7 +33,7 @@ class ManifestSchema(BaseModel):
         from_attributes = True
 
 class DeliverySchema(BaseModel):
-    delivery: int
+    delivery: str
     shipment: str
     customer: str
     city: str
@@ -76,7 +76,7 @@ class ActionSchema(BaseModel):
         from_attributes = True
 
 class ResponseSchemaDelivery(BaseModel):
-    delivery: int
+    delivery: str
     shipment: str
     customer: str
     city: str
