@@ -49,7 +49,7 @@ class Manifest(BASE):
 class Delivery(BASE):
     __tablename__ = "deliverys"
     id = Column("id", Integer, primary_key=True, autoincrement=True)
-    delivery = Column("delivery", Integer, unique=True)
+    delivery = Column("delivery", String, unique=True)
     shipment = Column("shipment", String)
     customer = Column("customer", String)
     city = Column("city", String)
