@@ -2,7 +2,6 @@ import os
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
 
-db = create_engine(os.getenv("DATABASE_URL"))
 BASE = declarative_base()
 
 class Usuario(BASE):
