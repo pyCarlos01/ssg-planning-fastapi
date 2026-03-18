@@ -1,4 +1,5 @@
 from typing import List
+from datetime import datetime
 from sqlalchemy.orm import Session
 from services import upsert_manifest
 from fastapi import APIRouter, Depends, HTTPException
@@ -13,8 +14,9 @@ async def listar_deliverys(session: Session = Depends(pegar_sessao), usuario: Us
   if not usuario.admin:
     raise HTTPException(status_code=400, detail="Você não tem autorização para fazer essa modificação")
   else:
+    today = datetime.today().date().strftime("%d/%m/%Y")
     # FILTRAR PELO PGI .filter(Manifest.pgi=="14/03/2026").all()
-    manifests = session.query(Manifest).all()
+    manifests = session.query(Manifest).filter(Manifest.pgi==today).all()
     return manifests
 
 @man_router.post("/atualizar")
